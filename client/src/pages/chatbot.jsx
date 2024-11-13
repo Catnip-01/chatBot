@@ -30,7 +30,10 @@ const ChatBot = ({ token }) => {
         alert("welcome, " + result.data.user.username);
       } catch (err) {
         setIsValidToken(false);
-        alert("token verification failed, please log in again : " + err);
+        console.log(
+          "token verification failed, please log in again : " +
+            JSON.stringify(err)
+        );
         navigate("/login");
       }
     };
