@@ -4,7 +4,9 @@ import { useNavigate } from "react-router-dom";
 const ChatbotButton = () => {
   const navigate = useNavigate();
   const chatbotRedirect = () => {
-    navigate("/chatbot");
+    const token = localStorage.getItem("token");
+    console.log("token in button : " + token);
+    navigate("/chatbot", { replace: true });
   };
 
   return (

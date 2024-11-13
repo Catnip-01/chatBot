@@ -1,0 +1,8 @@
+Register an account with data securely encrypted using bcrypt and JWT authentication for login.
+Access the landing page with a curated posts.
+Explore shared experiences from others.
+Interact anonymously to share your own story and connect with others.
+Reddit-inspired community format.
+Engage with specialized chatbots designed to help users navigate and cope with trauma.
+Consult our legal chatbot to receive guidance on legal options.
+Comments and posts undergo moderation through user flagging and AI-based content filtering.

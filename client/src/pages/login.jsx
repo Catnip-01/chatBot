@@ -28,7 +28,9 @@ const Login = () => {
       //   setToken(res.data.token);
 
       localStorage.setItem("token", res.data.token);
-      //   navigate("/chatbot");
+
+      navigate("/");
+      // console.log("Token after navigation:", localStorage.getItem("token"));
 
       console.log("res.message : " + JSON.stringify(res));
     } catch (err) {

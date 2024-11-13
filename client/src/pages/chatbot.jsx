@@ -4,12 +4,13 @@ import ReactMarkdown from "react-markdown";
 import Header from "../components/header";
 import { useNavigate } from "react-router-dom";
 
-const ChatBot = ({ token }) => {
+const ChatBot = () => {
   const [text, setText] = useState("");
   const [response, setResponse] = useState("");
   const [message, setMessage] = useState("");
   const [isValidToken, setIsValidToken] = useState(false);
   const navigate = useNavigate();
+  const [token, setToken] = useState(localStorage.getItem("token"));
   //   const token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -41,10 +42,10 @@ const ChatBot = ({ token }) => {
     if (token) {
       verifyToken();
     } else {
-      alert("token not found, please log in first!");
+      alert("token not found, please log in aksldjfhalksjh!");
       navigate("/login");
     }
-  }, [navigate, token]);
+  }, [token]);
 
   const makeQuery = async () => {
     let result;
