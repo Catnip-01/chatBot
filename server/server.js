@@ -144,6 +144,7 @@
 // });
 
 // server.js
+
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
@@ -153,9 +154,10 @@ const authRoutes = require("./routes/authRoutes");
 const postRoutes = require("./routes/postRoutes");
 const commentRoutes = require("./routes/commentRoutes");
 const geminiRoutes = require("./routes/geminiRoutes");
-const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-// const genAi = new GoogleGenerativeAI(process.env.API_KEY);
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+const genAI = new GoogleGenerativeAI("AIzaSyDl2Y25OC62FzjE2C1RZE8TGSwcZYQcOMw");
+
 const saltRounds = 10;
 const SECRET_KEY = "secret";
 
@@ -198,41 +200,28 @@ mongoose
 app.use("/api/auth", authRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/comments", commentRoutes);
-// app.use("/api/ai/geminiQuery", geminiRoutes);
 
 app.get("/chatbot", authenticateToken, (req, res) => {
   console.log("entered here");
-  // res.json({ message: "this is a protected route", user: req.user });
   res.status(200).json({ user: req.user });
 });
 
-app.get("/geminiQuery", (req, res) => {
+app.post("/geminiQuery", (req, res) => {
+  console.log("frontend request is : " + req.body.items);
   async function run() {
     try {
-      const model = genAi.getGenerativeModel({ model: "gemini-1.5-flash" });
-      const query = req.query.items;
-      const result = await model.generateContent(query);
-
-      const responseContent = await result.response.text();
-      console.log(responseContent);
-
+      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+      const prompt = req.body.items;
+      const result = await model.generateContent(prompt);
+      const responseContent = result.response.text();
+      console.log(result.response.text());
       res.status(200).send(responseContent);
     } catch (error) {
-      res.status(500).send("Error generating content: " + error.message);
+      res.status(500).json({ message: "message + " + error });
     }
   }
-
   run();
 });
-
-// app.post("/createPost", (req, res) => {
-//   try {
-//     const reqBody = req.body;
-//     console.log(JSON.stringify(reqBody));
-//   } catch (err) {
-//     console.log("error in creating post on the backend side : " + err);
-//   }
-// });
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => {

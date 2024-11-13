@@ -27,7 +27,10 @@ const ChatBot = ({ token }) => {
         alert("welcome, " + result.data.user.username);
       } catch (err) {
         setIsValidToken(false);
-        alert("token verification failed, please log in again");
+        alert(
+          "token verification failed, please log in again : " +
+            err.response.data.message
+        );
         navigate("/login");
       }
     };
@@ -43,13 +46,18 @@ const ChatBot = ({ token }) => {
   const makeQuery = async () => {
     let result;
     try {
-      result = await axios.get("http://localhost:8080/geminiQuery", {
-        params: { items: text },
-      });
+      result = await axios.post(
+        "http://localhost:8080/geminiQuery",
+        { items: text },
+        { headers: { Authorization: `Bearer ${token}` } } // Pass token as header
+      );
       setResponse(result.data);
       console.log(JSON.stringify(result));
     } catch (err) {
-      console.log("error while making query : " + result);
+      console.log(
+        "Error while making this query: " +
+          JSON.stringify(err.response?.data?.message || err.message)
+      );
     }
   };
 
