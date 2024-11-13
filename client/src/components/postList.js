@@ -7,7 +7,9 @@ const PostList = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get("http://localhost:8080/api/posts");
+      const res = await axios.get(
+        "https://chatbot-edag.onrender.com/api/posts"
+      );
       setPosts(res.data);
     };
     fetchPosts();

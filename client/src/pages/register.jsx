@@ -11,7 +11,7 @@ const Register = () => {
     try {
       const result = await axios.post(
         // "https://chatbot-edag.onrender.com/register",
-        "http://localhost:8080/api/auth/register",
+        "https://chatbot-edag.onrender.com/api/auth/register",
         {
           username: username,
           password: password,
