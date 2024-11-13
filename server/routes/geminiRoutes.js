@@ -22,7 +22,8 @@ const { authenticateToken } = require("../middleware/authMiddleware");
 //   }
 // });
 router.get("/chatbot", authenticateToken, (req, res) => {
-  chatbotQuery;
+  //   console.log(req.headers);
+  chatbotQuery();
 });
 
 router.post("/geminiQuery", (req, res) => {

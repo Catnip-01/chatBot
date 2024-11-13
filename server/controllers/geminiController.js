@@ -22,15 +22,17 @@
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const genAI = new GoogleGenerativeAI("AIzaSyDl2Y25OC62FzjE2C1RZE8TGSwcZYQcOMw");
 
-exports.chatbotQuery = async (req, res) => {
+const chatbotQuery = async (req, res) => {
+  console.log("entered herer");
   try {
+    console.log("riya gandu : " + req.user);
     res.status(200).json({ user: req.user });
   } catch (err) {
     console.log("error in authenticating in geminiController page: " + err);
   }
 };
 
-exports.geminiQuery = async (req, res) => {
+const geminiQuery = async (req, res) => {
   async function run() {
     try {
       const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
@@ -45,6 +47,8 @@ exports.geminiQuery = async (req, res) => {
   }
   run();
 };
+
+module.exports = { chatbotQuery, geminiQuery };
 
 // app.get("/chatbot", authenticateToken, (req, res) => {
 //   console.log("entered here");
