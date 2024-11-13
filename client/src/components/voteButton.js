@@ -6,7 +6,9 @@ const VoteButton = ({ postId }) => {
 
   const handleVote = async (type) => {
     try {
-      await axios.post(`http://localhost:8080/api/posts/${postId}/${type}`);
+      await axios.post(
+        `https://chatbot-edag.onrender.com/api/posts/${postId}/${type}`
+      );
       // Update the votes locally after vote
       setVotes((prev) => ({
         upvotes: type === "upvote" ? prev.upvotes + 1 : prev.upvotes,

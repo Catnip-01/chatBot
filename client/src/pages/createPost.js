@@ -10,7 +10,7 @@ const CreatePost = () => {
   const handleSubmit = async () => {
     try {
       const result = await axios.post(
-        "http://localhost:8080/api/posts/createPost",
+        "https://chatbot-edag.onrender.com/api/posts/createPost",
         {
           title,
           author,

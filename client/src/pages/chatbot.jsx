@@ -18,7 +18,7 @@ const ChatBot = () => {
       console.log("token in verifytoken : " + token);
       try {
         const result = await axios.get(
-          "http://localhost:8080/api/gemini/chatbot",
+          "https://chatbot-edag.onrender.com/api/gemini/chatbot",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -51,7 +51,7 @@ const ChatBot = () => {
     let result;
     try {
       result = await axios.post(
-        "http://localhost:8080/api/gemini/geminiQuery",
+        "https://chatbot-edag.onrender.com/api/gemini/geminiQuery",
         { items: text },
         { headers: { Authorization: `Bearer ${token}` } } // Pass token as header
       );
