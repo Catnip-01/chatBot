@@ -42,7 +42,7 @@ const ChatBot = () => {
     if (token) {
       verifyToken();
     } else {
-      alert("token not found, please log in aksldjfhalksjh!");
+      alert("Please log in first.");
       navigate("/login");
     }
   }, [token]);

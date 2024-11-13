@@ -16,8 +16,8 @@ function Header() {
   }, [localStorage.getItem("token")]);
   return (
     <header className="w-full bg-gptGray-900 sticky top-0 rounded-b-3xl flex flex-row justify-between px-4 py-6 sm:px-2 items-center">
-      <a href="/" className="text-white lg:pl-10 font-bold text-xl">
-        SecureSocial
+      <a href="/" className="text-white lg:pl-10 font-bold text-2xl">
+        GRIT-AI
       </a>
       <div className="m-3 flex flex-row">
         {isLoggedIn ? (

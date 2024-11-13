@@ -15,7 +15,7 @@ const ChatbotButton = () => {
         className=" px-10 py-5  text-white rounded-xl hover:rounded-full mr-2 bg-gptGray-300 hover:bg-white hover:text-gptGray-900 transition duration-300"
         onClick={chatbotRedirect}
       >
-        proceed to chatbot
+        Talk to Grit-AI
       </button>
     </div>
   );
