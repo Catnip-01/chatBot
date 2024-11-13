@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const SECRET_KEY = "secret";
 
-module.exports = (req, res, next) => {
+const authenticateToken = (req, res, next) => {
   const token = req.headers.authorization?.split(" ")[1];
   if (!token) return res.status(401).json({ message: "Unauthorized" });
 
@@ -12,3 +12,5 @@ module.exports = (req, res, next) => {
     next(); // Call next() to proceed to the next middleware or route handler
   });
 };
+
+module.exports = authenticateToken;

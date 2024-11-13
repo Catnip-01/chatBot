@@ -1,10 +1,11 @@
 // routes/postRoutes.js
 const express = require("express");
 const { createPost, getAllPosts } = require("../controllers/postController");
+const authenticateToken = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
-// router.post("/createPost", (req, res) => {
+// router.post("/createPost", authenticateToken, (req, res) => {
 //   try {
 //     console.log("request body : " + JSON.stringify(req.body));
 //     res.status(200).json({ message: "success" });

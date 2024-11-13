@@ -1,8 +1,25 @@
 const express = require("express");
-// import { geminiQuery } from "../controllers/geminiController";
 const router = express.Router();
-const geminiQuery = require("../controllers/geminiController");
+const {
+  geminiQuery,
+  chatbotQuery,
+} = require("../controllers/geminiController");
+const { authenticateToken } = require("../middleware/authMiddleware");
 
-// router.get("/", geminiQuery);
+try {
+  router.get("/chatbot", (req, res) => {
+    chatbotQuery(req, res);
+  });
+} catch (err) {
+  console.log("error in chatbot query : " + err);
+}
+
+try {
+  router.post("/geminiQuery", (req, res) => {
+    geminiQuery(req, res);
+  });
+} catch (err) {
+  console.log("this is location of error : " + err);
+}
 
 module.exports = router;

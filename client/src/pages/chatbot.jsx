@@ -73,9 +73,9 @@ const ChatBot = ({ token }) => {
       <Header />
 
       {response && (
-        <p className="border border-none p-5 mt-2 w-10/12 h-auto bg-gptGray-400 text-white rounded-lg mb-3 max-h-screen overflow-y-scroll">
+        <div className="border border-none p-5 mt-2 w-10/12 h-auto bg-gptGray-400 text-white rounded-lg mb-3 max-h-screen overflow-y-scroll">
           <ReactMarkdown>{response}</ReactMarkdown>
-        </p>
+        </div>
       )}
 
       <div className="border border-none bg bg-gptGray-400 text-white flex flex-row justify-between rounded-3xl w-3/4 p-1 lg:mb-3 sm:mb-2">
