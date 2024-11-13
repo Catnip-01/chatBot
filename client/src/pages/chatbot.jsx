@@ -17,7 +17,7 @@ const ChatBot = ({ token }) => {
       console.log("token in verifytoken : " + token);
       try {
         const result = await axios.get(
-          "https://chatbot-edag.onrender.com/chatbot",
+          "http://localhost:8080/api/gemini/chatbot",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -30,10 +30,7 @@ const ChatBot = ({ token }) => {
         alert("welcome, " + result.data.user.username);
       } catch (err) {
         setIsValidToken(false);
-        alert(
-          "token verification failed, please log in again : " +
-            err.response.data.message
-        );
+        alert("token verification failed, please log in again : " + err);
         navigate("/login");
       }
     };
@@ -50,7 +47,7 @@ const ChatBot = ({ token }) => {
     let result;
     try {
       result = await axios.post(
-        "https://chatbot-edag.onrender.com/geminiQuery",
+        "http://localhost:8080/api/gemini/geminiQuery",
         { items: text },
         { headers: { Authorization: `Bearer ${token}` } } // Pass token as header
       );

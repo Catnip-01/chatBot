@@ -17,8 +17,17 @@
 //   run();
 // };
 
+// const { authenticateToken } = require("../middleware/authMiddleware");
+
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+const genAI = new GoogleGenerativeAI("AIzaSyDl2Y25OC62FzjE2C1RZE8TGSwcZYQcOMw");
+
 exports.chatbotQuery = async (req, res) => {
-  res.status(200).json({ user: req.user });
+  try {
+    res.status(200).json({ user: req.user });
+  } catch (err) {
+    console.log("error in authenticating in geminiController page: " + err);
+  }
 };
 
 exports.geminiQuery = async (req, res) => {
