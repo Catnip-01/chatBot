@@ -33,6 +33,10 @@ app.use("/api/posts", postRoutes);
 app.use("/api/comments", commentRoutes);
 app.use("/api/gemini", geminiRoutes);
 
+app.get("/", (req, res) => {
+  res.send("hi there!");
+})
+
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
